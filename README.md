@@ -1,6 +1,28 @@
+<div align="center">
+
 # QUAL: Quantile Alignment Improves Zero-Shot Time-Series Foundation Models (FMTS@NeurIPS'26)
 
+[![Workshop](https://img.shields.io/badge/NeurIPS%202026-FMTS%20Workshop-6f42c1)](https://neurips.cc/virtual/2026/workshop/137514)
+[![Python](https://img.shields.io/badge/python-%E2%89%A53.9-3776ab?logo=python&logoColor=white)](https://www.python.org/)
+[![NumPy](https://img.shields.io/badge/dependency-NumPy%20only-013243?logo=numpy&logoColor=white)](https://numpy.org/)
+
+**Label-free · Training-free · Plug in any quantile forecaster**
+
+</div>
+
+> **TL;DR** Use the model pool as a probability reference, not only as an ensemble.
+> Re-expressing each TSFM's quantiles on the pooled distribution improves every
+> member, and keeping the aligned members separate makes the combined forecast
+> robust to weak models.
+
+## 📢 News
+
+- **Dec 2026** — QUAL will be presented at the NeurIPS 2026 Workshop on
+  [Foundation Models for Temporal Systems](https://neurips.cc/virtual/2026/workshop/137514) (Sydney).
+- **Oct 2026** — Code released.
+
 ## Overview
+
 **QUAL** (**Qu**antile **al**ignment) is a simple, label-free framework for
 improving and combining quantile forecasts from several time-series
 foundation models (TSFMs). It needs **no training, no target labels, and no
@@ -17,7 +39,7 @@ red lines are Pareto frontiers. Win rate is the fraction of subsets that beat
 the best individual model on both metrics.
 </em></p>
 
-## Highlights
+## ✨ Highlights
 
 - **The pool is a reference, not just an ensemble.** QUAL re-expresses each
   member forecast on the pooled distribution of all members. This alone improves
@@ -31,7 +53,28 @@ the best individual model on both metrics.
   QUAL beats the best individual model on both MASE and CRPS in **91.8%** of
   subsets with at least three members, and in every subset with at least five.
 
-## How it works
+## 📊 Results
+
+Every TSFM improves after quantile alignment, and the full QUAL forecast beats
+every original member on both metrics.
+
+| Model | MASE (original) | MASE (aligned) | CRPS (original) | CRPS (aligned) |
+|---|:---:|:---:|:---:|:---:|
+| TiRex-2 | 0.6969 | 0.6810 <sub>(−2.3%)</sub> | 0.4789 | 0.4704 <sub>(−1.8%)</sub> |
+| PatchTST-FM | 0.7069 | 0.6835 <sub>(−3.3%)</sub> | 0.4829 | 0.4732 <sub>(−2.0%)</sub> |
+| Timer-S1 | 0.6935 | 0.6783 <sub>(−2.2%)</sub> | 0.4856 | 0.4748 <sub>(−2.2%)</sub> |
+| FlowState | 0.7015 | 0.6824 <sub>(−2.7%)</sub> | 0.4866 | 0.4738 <sub>(−2.6%)</sub> |
+| TiRex | 0.7158 | 0.6838 <sub>(−4.5%)</sub> | 0.4885 | 0.4743 <sub>(−2.9%)</sub> |
+| TimesFM-2.5 | 0.7050 | 0.6828 <sub>(−3.2%)</sub> | 0.4903 | 0.4753 <sub>(−3.1%)</sub> |
+| Chronos-2 | 0.7333 | 0.6833 <sub>(−6.8%)</sub> | 0.5062 | 0.4774 <sub>(−5.7%)</sub> |
+| Toto-2.0-4M | 0.7591 | 0.6859 <sub>(−9.6%)</sub> | 0.5269 | 0.4849 <sub>(−8.0%)</sub> |
+| **QUAL (combined)** | | **0.6793** | | **0.4646** |
+
+<sub>GIFT-Eval, 97 configurations. Scores are geometric means relative to the
+seasonal-naive forecast; lower is better. "Aligned" is each member after
+quantile alignment against the eight-model pool.</sub>
+
+## ⚙️ How it works
 
 Given $K$ member forecasts, each a vector of quantiles on the levels
 $\tau_1 < \dots < \tau_Q$, QUAL proceeds in three steps for every horizon step.
@@ -45,7 +88,7 @@ $\tau_1 < \dots < \tau_Q$, QUAL proceeds in three steps for every horizon step.
    an average near the consensus and downweights large disagreements.
 3. **Rearrangement.** The combined quantiles are sorted so they never cross.
 
-## Installation
+## 📦 Installation
 
 ```bash
 pip install git+https://github.com/junhyeokkang/QUAL.git
@@ -53,7 +96,7 @@ pip install git+https://github.com/junhyeokkang/QUAL.git
 
 The only dependency is NumPy.
 
-## Quick start
+## 🚀 Quick start
 
 ```python
 import numpy as np
@@ -78,7 +121,10 @@ A runnable example with synthetic forecasts:
 python examples/quickstart.py
 ```
 
-### API
+<details>
+<summary><b>API reference</b></summary>
+
+<br>
 
 | Function | Returns |
 |---|---|
@@ -90,7 +136,9 @@ python examples/quickstart.py
 the highest. `levels` defaults to `0.1, ..., 0.9` when there are nine rows.
 The default `threshold` and `num_iterations` are the values used in the paper.
 
-## Citation
+</details>
+
+## 📝 Citation
 
 If you find QUAL useful, please cite our paper:
 
