@@ -1,20 +1,6 @@
-<div align="center">
-
 # QUAL: Quantile Alignment Improves Zero-Shot Time-Series Foundation Models (FMTS@NeurIPS'26)
 
-**Junhyeok Kang, Sangjun Han, Jun Seo, Seunghan Lee, Jaehoon Lee, Dongwan Kang,<br>
-Minjae Kim, Sungdong Yoo, Tae Yoon Lim, Hwanil Choi, Soonyoung Lee, Wonbin Ahn**
-
-LG AI Research
-
-[![Workshop](https://img.shields.io/badge/NeurIPS%202026-FMTS%20Workshop-6f42c1)](https://neurips.cc/)
-[![Python](https://img.shields.io/badge/python-%E2%89%A53.9-3776ab?logo=python&logoColor=white)](https://www.python.org/)
-[![NumPy](https://img.shields.io/badge/dependency-NumPy%20only-013243?logo=numpy&logoColor=white)](https://numpy.org/)
-
-</div>
-
----
-
+## Overview
 **QUAL** (**Qu**antile **al**ignment) is a simple, label-free framework for
 improving and combining quantile forecasts from several time-series
 foundation models (TSFMs). It needs **no training, no target labels, and no
@@ -24,7 +10,7 @@ change to the member models**: any model that outputs quantiles can be plugged i
   <img src="assets/figure1.png" width="95%" alt="Parameter efficiency and subset win rate of QUAL on GIFT-Eval">
 </p>
 
-<p align="center"><em>
+<p align="left"><em>
 <b>Figure 1.</b> Parameter efficiency and subset win rate on GIFT-Eval. MASE and CRPS
 panels plot each pool against total parameter count; markers are single TSFMs,
 red lines are Pareto frontiers. Win rate is the fraction of subsets that beat
