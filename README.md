@@ -2,7 +2,7 @@
 
 # QUAL: Quantile Alignment Improves Zero-Shot Time-Series Foundation Models (FMTS@NeurIPS'26)
 
-[![Workshop](https://img.shields.io/badge/NeurIPS%202026-FMTS%20Workshop-6f42c1)](https://neurips.cc/virtual/2026/workshop/137514)
+[![Workshop](https://img.shields.io/badge/NeurIPS%202026-FMTS%20Workshop-6f42c1)](https://fmts-workshop.github.io/)
 [![Python](https://img.shields.io/badge/python-%E2%89%A53.9-3776ab?logo=python&logoColor=white)](https://www.python.org/)
 [![NumPy](https://img.shields.io/badge/dependency-NumPy%20only-013243?logo=numpy&logoColor=white)](https://numpy.org/)
 
@@ -14,12 +14,6 @@
 > Re-expressing each TSFM's quantiles on the pooled distribution improves every
 > member, and keeping the aligned members separate makes the combined forecast
 > robust to weak models.
-
-## 📢 News
-
-- **Dec 2026** — QUAL will be presented at the NeurIPS 2026 Workshop on
-  [Foundation Models for Temporal Systems](https://neurips.cc/virtual/2026/workshop/137514) (Sydney).
-- **Oct 2026** — Code released.
 
 ## Overview
 
